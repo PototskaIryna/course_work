@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action={{ '/add_to_rule/'+ table_name }} method="POST">
+        <h1>Звяжіть правила з таблицею {{ table_name.split('_')[0] }}</h1>
+        {% if problem %}
+                    {{ problem }}
+        {% endif %}
+        {{ form.hidden_tag() }}
+        <p>Правила</p>
+        {{ form.rule_id(class="form-control") }}
+        <p>{{ table_name.split('_')[0] }}</p>
+        {% for line in form %}
+            <div >
+                {% if line.type == 'BooleanField' %}
+                    {{ line }} {{ line.label }}
+                {% endif %}
+            </div>
+        {% endfor %}
+        {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+        {#        {{ form.shadow_field(hidden="true") }}#}
+    </form>
+
+{% endblock %}

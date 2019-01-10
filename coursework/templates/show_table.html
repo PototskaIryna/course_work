@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ table|safe }}
+    <hr>
+    <a href={{ '/add_table/'+table_name }}>Додати</a>
+    <a href={{ '/update_table/'+table_name }}>Змінити</a>
+    <a href={{ '/delete_table/'+table_name }}>Видалити</a>
+
+{% endblock %}

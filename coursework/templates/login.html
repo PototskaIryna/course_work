@@ -1,0 +1,25 @@
+{% extends "login_base.html" %}
+
+{% block content %}
+    <main >
+
+        <form action="/login" method="POST">
+            {{ form.hidden_tag() }}
+            <h1>Увійдіть у систему</h1>
+            {% if problem %}
+                {{ problem }}
+            {% endif %}
+            {{ form.login(class="form-control", placeholder=form.login.label.text) }}
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+            {{ form.remember_me }} {{ form.remember_me.label }}
+            {{ form.submit(class_="btn btn-lg btn-primary btn-block") }}
+            {% for error in form.login.errors %}
+                {{ error }}
+            {% endfor %}
+            {% for error in form.password.errors %}
+                {{ error }}
+            {% endfor %}
+            <a href="/registration">Створити аккаунт</a>
+        </form>
+    </main>
+{% endblock %}
